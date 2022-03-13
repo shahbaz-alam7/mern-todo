@@ -50,13 +50,15 @@ function App() {
 
   const deleteNote = (id) => {
     console.log(id);
-    Axios.delete(`https://shah-todo-app.herokuapp.com/${id}`).then(() => {
-      setNoteList(
-        noteList.filter((val) => {
-          return val._id != id;
-        })
-      );
-    });
+    Axios.delete(`https://shah-todo-app.herokuapp.com/delete/${id}`).then(
+      () => {
+        setNoteList(
+          noteList.filter((val) => {
+            return val._id != id;
+          })
+        );
+      }
+    );
   };
 
   useEffect(() => {
