@@ -9,7 +9,7 @@ function App() {
   const addNote = async () => {
     // console.warn(note);
     if (note) {
-      Axios.post("http://localhost:3001/addnote", {
+      Axios.post("https://shah-todo-app.herokuapp.com/addnote", {
         note: note,
       })
         .then((res) => {
@@ -28,7 +28,7 @@ function App() {
     console.log(id);
     const newNote = prompt("Update your note here...");
     if (newNote) {
-      Axios.put("http://localhost:3001/update", {
+      Axios.put("https://shah-todo-app.herokuapp.com/update", {
         id: id,
         newNote: newNote,
       })
@@ -50,7 +50,7 @@ function App() {
 
   const deleteNote = (id) => {
     console.log(id);
-    Axios.delete(`http://localhost:3001/delete/${id}`).then(() => {
+    Axios.delete(`https://shah-todo-app.herokuapp.com/${id}`).then(() => {
       setNoteList(
         noteList.filter((val) => {
           return val._id != id;
@@ -60,7 +60,7 @@ function App() {
   };
 
   useEffect(() => {
-    Axios.get("http://localhost:3001/read")
+    Axios.get("https://shah-todo-app.herokuapp.com/read")
       .then((res) => {
         setNoteList(res.data);
       })
